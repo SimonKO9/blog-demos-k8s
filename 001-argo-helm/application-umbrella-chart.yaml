@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-helm-umbrella
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: default
+  source:
+    helm: {}
+    path: 001-argo-helm/umbrella-chart
+    repoURL: https://github.com/SimonKO9/blog-demos-k8s.git
+    targetRevision: argo-helm
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: umbrella
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -1,6 +1,6 @@
 # Local k8s
 
-This document goes over a local k8s setup.
+This document describes how to set up a local Kubernetes cluster using [kind](https://kind.sigs.k8s.io/docs/user/quick-start/).
 
 ## Prerequisites
 
@@ -25,12 +25,17 @@ version.BuildInfo{Version:"v3.18.3", GitCommit:"6838ebcf265a3842d1433956e8a622e3
 $ kind --version
 kind version 0.29.0
 ```
-### Installation guides
+
+## Installation
+
+### Installation Guides
 
 Podman - https://podman.io/docs/installation
 Kubectl - https://kubernetes.io/docs/tasks/tools/
 Helm - https://helm.sh/docs/intro/install/
 Kind - https://kind.sigs.k8s.io/docs/user/quick-start/
+
+### Rootless Podman
 
 Please note that if you're using Rootless Podman, there's additional steps you have to perform. See https://kind.sigs.k8s.io/docs/user/rootless/#host-requirements for details.
 
@@ -46,7 +51,7 @@ Deleted nodes: ["kind-control-plane"]
 ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"
 ```
 
-## Start kind cluster
+## Create a cluster
 
 ```sh
 $ kind create cluster

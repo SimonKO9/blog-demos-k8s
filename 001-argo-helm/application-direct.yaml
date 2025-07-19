@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-helm-direct
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: default
+  source:
+    helm:
+      valuesObject:
+        nginx:
+          service:
+            type: ClusterIP
+    path: nginx
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: direct
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
