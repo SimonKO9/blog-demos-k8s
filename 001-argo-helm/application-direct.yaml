@@ -10,12 +10,11 @@ spec:
   source:
     helm:
       valuesObject:
-        nginx:
-          service:
-            type: ClusterIP
-    path: nginx
+        service:
+          type: ClusterIP
+    chart: nginx
     repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: main
+    targetRevision: 21.0.8
   destination:
     server: https://kubernetes.default.svc
     namespace: direct

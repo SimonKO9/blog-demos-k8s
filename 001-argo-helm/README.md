@@ -30,3 +30,32 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 Go to https://localhost:8080 in your browser and sign in as `admin` using the password you just retrieved.
+
+## Deploy repository
+
+```sh
+kubectl apply -f repository.yaml
+```
+
+## Deploy apps
+
+```sh
+kubectl apply -f application-direct.yaml
+kubectl apply -f application-umbrella-chart.yaml
+```
+
+## Check if apps are deployed
+
+Two applications should appear in Argo UI. They should both show healthy and synced.
+
+You can also inspect the pods:
+
+```sh
+$ kubectl get po -n umbrella
+NAME                                        READY   STATUS    RESTARTS   AGE
+argo-helm-umbrella-nginx-7c6bb7f75c-jnng5   1/1     Running   0          9m25s
+
+$ kubectl get po -n direct
+NAME                                      READY   STATUS    RESTARTS   AGE
+argo-helm-direct-nginx-75dc444664-vhvfp   1/1     Running   0          113s
+```
