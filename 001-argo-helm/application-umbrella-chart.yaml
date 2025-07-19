@@ -10,7 +10,7 @@ spec:
   source:
     path: main
     repoURL: https://github.com/SimonKO9/blog-demos-k8s.git
-    targetRevision: argo-helm
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: umbrella
