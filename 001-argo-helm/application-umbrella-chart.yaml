@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    path: main
+    path: 001-argo-helm/umbrella-chart
     repoURL: https://github.com/SimonKO9/blog-demos-k8s.git
     targetRevision: main
   destination:
