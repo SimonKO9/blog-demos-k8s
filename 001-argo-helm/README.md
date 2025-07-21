@@ -31,10 +31,12 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 Go to https://localhost:8080 in your browser and sign in as `admin` using the password you just retrieved.
 
-## Deploy repository
+## Deploy repository (optional)
+
+This step is only needed for accessing a chart from a private repository. Adjust the file with your creds.
 
 ```sh
-kubectl apply -f repository.yaml
+kubectl apply -f private-repository.yaml
 ```
 
 ## Deploy apps

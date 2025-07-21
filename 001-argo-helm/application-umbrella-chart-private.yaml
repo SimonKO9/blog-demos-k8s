@@ -1,23 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-helm-direct
+  name: argo-helm-umbrella
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
-    helm:
-      valuesObject:
-        service:
-          type: ClusterIP
-    chart: nginx
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 21.0.6
+    path: 001-argo-helm/umbrella-chart-private
+    repoURL: https://github.com/SimonKO9/blog-demos-k8s.git
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: direct
+    namespace: umbrella-private
   syncPolicy:
     automated:
       prune: true

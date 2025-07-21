@@ -1,0 +1,15 @@
+# only needed if accessing a private repository
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bitnami-oci-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  url: 845258155985.dkr.ecr.eu-central-1.amazonaws.com/bitnamicharts
+  name: private-oci
+  type: helm
+  enableOCI: "true"
+  username: AWS
+  password: <placeholder-for-aws-ecr-token>

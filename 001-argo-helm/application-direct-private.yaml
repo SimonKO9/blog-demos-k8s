@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-helm-direct
+  name: argo-helm-direct-private
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io  
@@ -13,11 +13,11 @@ spec:
         service:
           type: ClusterIP
     chart: nginx
-    repoURL: registry-1.docker.io/bitnamicharts
+    repoURL: 845258155985.dkr.ecr.eu-central-1.amazonaws.com/bitnamicharts
     targetRevision: 21.0.6
   destination:
     server: https://kubernetes.default.svc
-    namespace: direct
+    namespace: direct-private
   syncPolicy:
     automated:
       prune: true
