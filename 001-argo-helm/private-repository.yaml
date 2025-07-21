@@ -7,7 +7,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  url: 845258155985.dkr.ecr.eu-central-1.amazonaws.com/bitnamicharts
+  url: 845258155985.dkr.ecr.eu-central-1.amazonaws.com
   name: private-oci
   type: helm
   enableOCI: "true"
