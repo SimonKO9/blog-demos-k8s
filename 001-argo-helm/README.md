@@ -26,7 +26,7 @@ kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 Then, forward port to access the UI:
 ```sh
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argocd 8080:44kubectl port-forward svc/argocd-server -n argocd 8080:4433
 ```
 
 Go to https://localhost:8080 in your browser and sign in as `admin` using the password you just retrieved.

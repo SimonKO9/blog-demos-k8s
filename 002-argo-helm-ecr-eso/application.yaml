@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: default
+  source:
+    helm: {}
+    chart: helm/nginx-ingress
+    repoURL: 886036506409.dkr.ecr.eu-central-1.amazonaws.com
+    targetRevision: 2.2.2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx-ingress
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
